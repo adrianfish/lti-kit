@@ -1,0 +1,26 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@hono/hono@4": "4.12.8",
+    "jsr:@panva/jose@6": "6.2.2",
+    "jsr:@std/encoding@1": "1.0.10"
+  },
+  "jsr": {
+    "@hono/hono@4.12.8": {
+      "integrity": "1997fde8abf28e84d821c9c867229be020e268d4749397aec071305bf54db297"
+    },
+    "@panva/jose@6.2.2": {
+      "integrity": "bfe1178a9d2f53effa5ee6c1786b6534a39690b03969472b3ad690600d8898ec"
+    },
+    "@std/encoding@1.0.10": {
+      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@hono/hono@4",
+      "jsr:@panva/jose@6",
+      "jsr:@std/encoding@1"
+    ]
+  }
+}

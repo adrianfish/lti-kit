@@ -1,0 +1,21 @@
+{
+  "name": "@adrianfish/lti-kit",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "imports": {
+    "@hugoalh/http-header-link": "jsr:@hugoalh/http-header-link@1.0.3",
+    "@hono": "jsr:@hono/hono@^4",
+    "@hono/cookie": "jsr:@hono/hono@^4/cookie",
+    "@hono/cors": "jsr:@hono/hono@^4/cors",
+    "@hono/secure-headers": "jsr:@hono/hono@^4/secure-headers",
+    "@panva/jose": "jsr:@panva/jose@^6",
+    "@std/encoding/base64": "jsr:@std/encoding@^1/base64"
+  },
+  "tasks": {
+    "test": "deno test --allow-net --allow-env --allow-read --unstable-kv --changed",
+    "doc": " deno doc --html mod.ts"
+  },
+  "fmt": {
+    "lineWidth": 128
+  }
+}
