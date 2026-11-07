@@ -1,7 +1,3 @@
-# AGENTS.md
-
-This file gives AI coding agents (Claude Code, Codex, Cursor, etc.) context on how to work in this repository.
-
 ## Project Overview
 
 A Deno/Hono implementation of the LTI 1.3 Advantage specification written in TypeScript,
@@ -72,3 +68,4 @@ deno lint
 - This project does not use Node.js or npm as the primary runtime — don't suggest `npm install`, `package.json` scripts, or Node-specific APIs (`fs`, `path` from `node:` without the specifier) unless explicitly needed via `npm:` compat.
 - Always check `deno.json` for existing tasks and import aliases before adding new dependencies.
 - Prefer standard library modules from `jsr:@std/*` where applicable.
+- The version of LTI is 1.3 with the LTI Advantage extensions. There is no support for older versions of the LTI specifications.
