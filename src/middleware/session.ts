@@ -19,7 +19,7 @@ import { GRADING, GROUPS, ROSTER } from "../constants.ts";
 import { randomHex } from "../auth/keys.ts";
 import { DEEP_LINKING, RESOURCE_LINK } from "../messages.ts";
 
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { ErrorHandler, LTIContext, LTIHandler, LtikPayload, Platform } from "../types.ts";
 import type { Context, MiddlewareHandler } from "@hono";
 import type { ValidationResult } from "../auth/tokens.ts";
@@ -28,7 +28,7 @@ const IDTOKEN_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 const CONTEXT_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 interface SessionMiddlewareOptions {
-  storage: Storage;
+  storage: LTIStorage;
   secret: string;
   aesKey: CryptoKey;
   toolDomain: string;

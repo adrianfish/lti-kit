@@ -10,7 +10,7 @@
 
 import type { Context } from "@hono";
 import { setCookie } from "@hono/cookie";
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { Platform } from "../types.ts";
 import { randomHex } from "../auth/keys.ts";
 
@@ -28,7 +28,7 @@ interface LoginParams {
 
 export async function handleLogin(
   c: Context,
-  storage: Storage,
+  storage: LTIStorage,
   cookieOptions: { secure: boolean; sameSite: "Lax" | "Strict" | "None" },
 ): Promise<Response> {
   // Accept both GET and POST (spec allows either)

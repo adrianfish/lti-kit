@@ -5,12 +5,12 @@ import { registerPlatform } from "../utils/platform-utils.ts";
 
 import type { Context } from "@hono";
 import type { Platform, ToolOptions } from "../types.ts";
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { EnrichmentField } from "../services/enrichment-fields.ts";
 
 export async function handleRegisterPlatform(
   c: Context,
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   clientName: string,

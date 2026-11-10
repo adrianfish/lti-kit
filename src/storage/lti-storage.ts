@@ -8,7 +8,7 @@ export interface GroupTotals {
   byGroup: Record<string, number>;
 }
 
-export interface Storage {
+export interface LTIStorage {
 
   savePlatform(platform: Platform): Promise<void>;
 

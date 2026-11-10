@@ -9,7 +9,7 @@ import { LMS_EXTENSIONS } from "./extensions.ts";
 import { ENRICHMENT_FIELDS } from "./enrichment-fields.ts";
 import { buildKeyId } from "../utils/platform-utils.ts";
 
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/storage.ts";
 import type { ContextToken, Member, MemberPage, Platform } from "../types.ts";
 
 /** A page of NRPS members, plus the cursor/token for the next page (if any). */
@@ -27,7 +27,7 @@ export interface MemberFilter {
 }
 
 export async function getPageOfMembers(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -49,7 +49,7 @@ export async function getPageOfMembers(
 }
 
 export async function isMembersCacheBuilding(
-  storage: Storage,
+  storage: LTIStorage,
   platformUrl: string,
   clientId: string,
   contextId: string
@@ -59,7 +59,7 @@ export async function isMembersCacheBuilding(
 }
 
 export async function ensureMembersCached(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -77,7 +77,7 @@ export async function ensureMembersCached(
 }
 
 export async function getCachedRoleTotals(
-  storage: Storage,
+  storage: LTIStorage,
   platformUrl: string,
   clientId: string,
   contextId: string,
@@ -111,7 +111,7 @@ export async function getCachedRoleTotals(
  * @return {object} A js object with the members and possibly the url for the next page of members
  */
 async function loadMembers(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   membershipsUrl?: string | null,
@@ -219,7 +219,7 @@ async function loadMembers(
 }
 
 async function persistMembers(
-  storage: Storage,
+  storage: LTIStorage,
   platformUrl: string,
   clientId: string,
   contextId: string,
@@ -230,7 +230,7 @@ async function persistMembers(
 }
 
 async function primeMembersCache(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -284,7 +284,7 @@ async function primeMembersCache(
  * falls back to a counting scan.
  */
 async function filteredCount(
-  storage: Storage,
+  storage: LTIStorage,
   platformUrl: string,
   clientId: string,
   contextId: string,

@@ -7,7 +7,6 @@ import { createSessionMiddleware } from "./middleware/session.ts";
 import { handleLogin } from "./routes/login.ts";
 import { handleRegisterPlatform } from "./routes/register-platform.ts";
 import { handleInvitations } from "./routes/invitations.ts";
-import { DenoKVStorage } from "./storage/denokv-storage.ts";
 import { getCachedRoleTotals, getPageOfMembers, isMembersCacheBuilding } from "./services/nrps.ts";
 import { getGroups } from "./services/groups.ts";
 import { createLineItem, getLineItems, getResults, postScore } from "./services/grade.ts";
@@ -19,7 +18,7 @@ import { deriveAesKey } from "./crypto.ts";
 import { verifyLtik } from "./auth/tokens.ts";
 
 import type { MiddlewareHandler } from "@hono";
-import type { Storage } from "./storage/storage.ts";
+import type { LTIStorage } from "./storage/lti-storage.ts";
 import type { MemberFilter } from "./services/nrps.ts";
 import type { ContentItem, ContextToken, ErrorHandler, Group, LineItem, LineItemOptions, LtikPayload, LTIContext, LTIHandler, LTIToken, MemberPage, Platform, Result, Score, ToolOptions } from "./types.ts";
 
@@ -76,6 +75,7 @@ export class LTIKit {
     clientName: string,
     description: string,
     logoUri: string,
+    storage: LTIStorage,
     options: ToolOptions = {}
   ): Promise<this> {
 
@@ -86,7 +86,7 @@ export class LTIKit {
     this.#logoUri = logoUri;
     this.#options = options;
     this.#aesKey = await deriveAesKey(secret);
-    this.#storage = await DenoKVStorage.open();
+    this.#storage = storage;
 
     await this.#buildRoutes();
     this.#ready = true;

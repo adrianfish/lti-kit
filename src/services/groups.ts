@@ -6,11 +6,11 @@ import { HTTPHeaderLink, HTTPHeaderLinkEntry } from "@hugoalh/http-header-link";
 import { requestAccessToken } from "./oauth.ts";
 import { buildKeyId } from "../utils/platform-utils.ts";
 
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/storage.ts";
 import type { ContextToken, Group, Platform } from "../types.ts";
 
 export async function ensureGroupsCached(
-    storage: Storage,
+    storage: LTIStorage,
     toolDomain: string,
     aesKey: CryptoKey,
     platformUrl: string,
@@ -28,7 +28,7 @@ export async function ensureGroupsCached(
 }
 
 export async function getGroups(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -60,7 +60,7 @@ export async function getGroups(
  * @return {object} A js object with the groups
  */
 async function loadGroups(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   groupsUrl?: string | string[] | null,
@@ -134,7 +134,7 @@ async function loadGroups(
 }
 
 async function primeGroupsCache(
-    storage: Storage,
+    storage: LTIStorage,
     toolDomain: string,
     aesKey: CryptoKey,
     platformUrl: string,
@@ -176,7 +176,7 @@ async function primeGroupsCache(
 }
 
 async function persistGroups(
-  storage: Storage,
+  storage: LTIStorage,
   platformUrl: string,
   clientId: string,
   contextId: string,

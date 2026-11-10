@@ -7,7 +7,7 @@ import { DEEP_LINKING, RESOURCE_LINK } from "../messages.ts";
 
 import type { JWTPayload, JWTVerifyGetKey } from "@panva/jose";
 import type { ContextToken, IdToken, Platform } from "../types.ts";
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { LtikPayload } from "../types.ts";
 
 const NONCE_TTL_MS = 10_000; // 10 seconds
@@ -86,7 +86,7 @@ export interface ValidationResult {
 export async function validateToken(
   idTokenJwt: string,
   platform: Platform,
-  storage: Storage,
+  storage: LTIStorage,
   debug: boolean = false,
 ): Promise<ValidationResult> {
   // Decode header without verifying — we need kid to pick the right key

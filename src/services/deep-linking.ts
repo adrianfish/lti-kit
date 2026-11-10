@@ -4,7 +4,7 @@
 
 import { SignJWT } from "@panva/jose";
 import { getPrivateKey } from "../auth/keys.ts";
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/storage.ts";
 import type { ContentItem, ContextToken, IdToken, LTIToken } from "../types.ts";
 
 /**
@@ -13,7 +13,7 @@ import type { ContentItem, ContextToken, IdToken, LTIToken } from "../types.ts";
  *
  * @param {platformCode: string; contextId: string; userId: string;} data The params.
  * @param {ContentItem[]} items Content items to return to the platform
- * @param {Storage} storage Storage (to retrieve the private key)
+ * @param {LTIStorage} storage Storage (to retrieve the private key)
  * @param {CryptoKey} aesKey AES key for decrypting stored private key
  * @param {string} toolUrl The tool's own URL (used as iss in the response JWT)
  *
@@ -22,7 +22,7 @@ import type { ContentItem, ContextToken, IdToken, LTIToken } from "../types.ts";
 export async function createDeepLinkingForm(
   data: { platformCode: string; contextId: string; userId: string; },
   items: ContentItem[],
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
   toolUrl: string,
 ): Promise<string> {
@@ -69,7 +69,7 @@ export async function createDeepLinkingForm(
 export async function createDeepLinkingMessage(
   token: LTIToken,
   items: ContentItem[],
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
   toolUrl: string,
 ): Promise<string> {

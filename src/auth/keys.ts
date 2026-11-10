@@ -8,7 +8,7 @@
 
 import { exportJWK, exportPKCS8, exportSPKI, generateKeyPair, importPKCS8, importSPKI } from "@panva/jose";
 import { decrypt, encrypt } from "../crypto.ts";
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 
 export interface JWKRecord {
   kid: string;
@@ -21,13 +21,13 @@ export interface JWKRecord {
 
 /**
  * Generate a 4096-bit RSA keypair, encrypt both halves, and store them.
- * Returns the kid.
  */
 export async function generateAndStorePlatformKeyPair(
   kid: string,
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
 ): Promise<void> {
+
   const { publicKey, privateKey } = await generateKeyPair("RS256", {
     modulusLength: 4096,
     extractable: true,
@@ -50,7 +50,7 @@ export async function generateAndStorePlatformKeyPair(
  */
 export async function getPrivateKey(
   kid: string,
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
 ): Promise<CryptoKey> {
   const encPriv = await storage.getPrivateKey(kid);
@@ -64,7 +64,7 @@ export async function getPrivateKey(
  */
 export async function getPublicKey(
   kid: string,
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
 ): Promise<CryptoKey> {
   const encPub = await storage.getPublicKey(kid);
@@ -78,7 +78,7 @@ export async function getPublicKey(
  * Decrypts all stored public keys and converts them to JWK format.
  */
 export async function buildJwks(
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
 ): Promise<{ keys: JWKRecord[] }> {
   const encKeys = await storage.getAllPublicKeys();

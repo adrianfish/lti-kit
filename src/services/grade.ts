@@ -4,7 +4,7 @@
 import { requestAccessToken } from "./oauth.ts";
 import { buildKeyId } from "../utils/platform-utils.ts";
 
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { ContextToken, LineItem, LineItemOptions, LTIToken, Platform, Result, Score } from "../types.ts";
 
 const AGS_SCOPE_LINEITEM = "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem";
@@ -13,7 +13,7 @@ const AGS_SCOPE_SCORE = "https://purl.imsglobal.org/spec/lti-ags/scope/score";
 const AGS_SCOPE_RESULT_RO = "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly";
 
 export async function ensureLineItemsCached(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -37,7 +37,7 @@ export async function ensureLineItemsCached(
 }
 
 export async function getLineItems(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -53,7 +53,7 @@ export async function getLineItems(
 
 /** Get all line items for the current context, following pagination. */
 async function loadLineItems(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -107,7 +107,7 @@ async function loadLineItems(
 }
 
 export async function createLineItem(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -166,7 +166,7 @@ export async function createLineItem(
 }
 
 export async function postScore(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string,
   aesKey: CryptoKey,
   platformUrl: string,
@@ -228,7 +228,7 @@ export async function postScore(
  * @returns A promise containing an array of Result objects or null
  */
 export async function getResults(
-  storage: Storage,
+  storage: LTIStorage,
   toolDomain: string, 
   aesKey: CryptoKey,
   platformUrl: string,

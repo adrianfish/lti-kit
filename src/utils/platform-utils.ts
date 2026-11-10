@@ -1,9 +1,9 @@
-import { Storage } from "../storage/storage.ts";
+import { LTIStorage } from "../storage/lti-storage.ts";
 import { generateAndStorePlatformKeyPair } from "../auth/keys.ts";
 
 import type { Platform, ToolOptions } from "../types.ts";
 
-export async function registerPlatform(storage: Storage, aesKey: CryptoKey, platform: Platform, options?: ToolOptions): Promise<Platform> {
+export async function registerPlatform(storage: LTIStorage, aesKey: CryptoKey, platform: Platform, options?: ToolOptions): Promise<Platform> {
 
   const existing = await storage.getPlatform(platform.url, platform.clientId);
   if (existing) {
@@ -28,7 +28,7 @@ export async function registerPlatform(storage: Storage, aesKey: CryptoKey, plat
  *
  * @return {Promise} A promise which will be fulfilled when the deletion has completed
  */
-export async function deletePlatform(storage: Storage, url: string, clientId: string): Promise<void> {
+export async function deletePlatform(storage: LTIStorage, url: string, clientId: string): Promise<void> {
   await storage.setPlatformActive(url, clientId, false);
 }
 

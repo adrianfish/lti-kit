@@ -1,7 +1,7 @@
 import { hash } from "../crypto.ts";
 
-import type { Context } from "@hono";
-import type { Storage } from "../storage/storage.ts";
+import type { Context } from "hono";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { Platform } from "../types.ts";
 
 /**
@@ -18,7 +18,7 @@ export async function handleInvitations(
   c: Context,
   registrationUrl: string,
   secret: string,
-  storage: Storage,
+  storage: LTIStorage,
 ): Promise<Response> {
 
   const body = await c.req.parseBody()

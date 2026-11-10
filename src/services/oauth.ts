@@ -4,7 +4,7 @@
 
 import { SignJWT } from "@panva/jose";
 import { getPrivateKey, randomHex } from "../auth/keys.ts";
-import type { Storage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/storage.ts";
 import type { LTIToken, AccessToken } from "../types.ts";
 
 const ACCESS_TOKEN_TTL_MS = 60 * 60 * 1000; // 1 hour
@@ -16,7 +16,7 @@ const ACCESS_TOKEN_TTL_MS = 60 * 60 * 1000; // 1 hour
 export async function getAccessToken(
   token: LTIToken,
   scopes: string[],
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
 ): Promise<string> {
 
@@ -48,7 +48,7 @@ export async function requestAccessToken(
   clientId: string,
   platformKid: string,
   scopes: string[],
-  storage: Storage,
+  storage: LTIStorage,
   aesKey: CryptoKey,
 ): Promise<string | null> {
 
