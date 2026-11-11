@@ -1,6 +1,6 @@
 import { DEEP_LINKING, RESOURCE_LINK } from "./messages.ts";
 
-import type { Context } from "@hono";
+import type { Context } from "hono";
 
 // ---------------------------------------------------------------------------
 // Platform configuration

@@ -1,33 +1,28 @@
 # lti-kit
 
-A [LTI 1.3](https://www.imsglobal.org/spec/lti/v1p3/) tool library for [Deno](https://deno.com/),
-using [Hono](https://hono.dev/) for the built in LTI routing.
+A [LTI 1.3](https://www.imsglobal.org/spec/lti/v1p3/) tool library, written in TypeScript and using
+[Hono](https://hono.dev/) for the built in LTI routing.
 
 Implements the full LTI 1.3 + OIDC launch flow, Assignment & Grade Services (AGS), Deep Linking, and
-Names & Roles Provisioning. Uses Deno KV for storage.
-
-For full documentation of the api, run "deno task doc" to generate a set of html documents under the
-docs directory.
+Names & Roles Provisioning.
 
 ## Installation
 
-Install from JSR:
-
-deno add jsr:@adrianfish/lti-kit
+npm i @adrianfish/lti-kit
 
 ## Quick start
 
 The basic idea is that you, the user of this library, would write a web application in Javascript or
 Typescript and you would add the lti-kit handler to your routing architecture. lti-kit handles all
-of the LTI 1.3 stuff, storing keys and other LTI data under the "lti" prefix in a Deno KV store. You
-would then be free to add hooks to lti-kit so your code can react to LTI 1.3 launches and
-*do stuff*. You create the lti-kit instance and chain api calls, handlers first then setup.
+of the LTI 1.3 stuff, storing keys and other LTI data using a storage api defined in LTIStorage. Add
+hooks to lti-kit so your code can react to LTI 1.3 launches and *do stuff*. You create the lti-kit
+instance and chain api calls, handlers first then setup.
 
 ```ts
-import { LTIKit } from "jsr:@adrianfish/lti-kit";
-import { Hono } from "jsr:@hono/hono";
+import { LTIKit } from "@adrianfish/lti-kit";
+import { Hono } from "hono";
 
-import type { Context } from "jsr:@hono/hono";
+import type { Context } from "hono";
 
 const lti = new LTIKit();
 
@@ -44,8 +39,6 @@ app.route("/lti", lti.handler());
 // Your application's routing.
 app.get("/some-app-route", someAppRouteHandler);
 app.get("/some-other-app-route", someOtherAppRouteHandler);
-
-Deno.serve(app.fetch);
 ```
 
 The secret is used to sign session tokens (LTIKs) and encrypt stored RSA keys. It must remain

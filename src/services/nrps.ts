@@ -9,7 +9,7 @@ import { LMS_EXTENSIONS } from "./extensions.ts";
 import { ENRICHMENT_FIELDS } from "./enrichment-fields.ts";
 import { buildKeyId } from "../utils/platform-utils.ts";
 
-import type { LTIStorage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { ContextToken, Member, MemberPage, Platform } from "../types.ts";
 
 /** A page of NRPS members, plus the cursor/token for the next page (if any). */

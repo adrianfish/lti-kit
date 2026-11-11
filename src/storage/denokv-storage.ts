@@ -1,4 +1,4 @@
-import type { GroupTotals, Storage } from "./storage.ts";
+import type { GroupTotals, LTIStorage } from "./lti-storage.ts";
 import type { AccessToken, ContextToken, Group, IdToken, LineItem, LineItemOptions, Member, MemberPage, OidcStateData, Platform, Result } from "../types.ts";
 
 const LIST_CHUNK = 200;
@@ -19,7 +19,7 @@ const LIST_CHUNK = 200;
  *
  * Requires: --unstable-kv flag (or "unstable": ["kv"] in deno.json)
  */
-export class DenoKVStorage implements Storage {
+export class DenoKVStorage implements LTIStorage {
   #kv: Deno.Kv;
   #membersAndGroupsTTL: number = 15 * 60 * 1_000;
 

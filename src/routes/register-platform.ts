@@ -3,7 +3,7 @@ import { DEEPLINKING, GRADING, ROSTER  } from "../constants.ts";
 import { DEEP_LINKING, RESOURCE_LINK  } from "../messages.ts";
 import { registerPlatform } from "../utils/platform-utils.ts";
 
-import type { Context } from "@hono";
+import type { Context } from "hono";
 import type { Platform, ToolOptions } from "../types.ts";
 import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { EnrichmentField } from "../services/enrichment-fields.ts";

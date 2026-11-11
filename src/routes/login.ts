@@ -8,8 +8,8 @@
  * Spec: IMS Security Framework §4.1.1
  */
 
-import type { Context } from "@hono";
-import { setCookie } from "@hono/cookie";
+import type { Context } from "hono";
+import { setCookie } from "hono/cookie";
 import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { Platform } from "../types.ts";
 import { randomHex } from "../auth/keys.ts";

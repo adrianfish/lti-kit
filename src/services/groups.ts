@@ -6,7 +6,7 @@ import { HTTPHeaderLink, HTTPHeaderLinkEntry } from "@hugoalh/http-header-link";
 import { requestAccessToken } from "./oauth.ts";
 import { buildKeyId } from "../utils/platform-utils.ts";
 
-import type { LTIStorage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { ContextToken, Group, Platform } from "../types.ts";
 
 export async function ensureGroupsCached(

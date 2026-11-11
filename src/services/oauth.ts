@@ -2,9 +2,9 @@
  * OAuth2 client credentials flow for LTI service API calls.
  */
 
-import { SignJWT } from "@panva/jose";
+import { SignJWT } from "jose";
 import { getPrivateKey, randomHex } from "../auth/keys.ts";
-import type { LTIStorage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { LTIToken, AccessToken } from "../types.ts";
 
 const ACCESS_TOKEN_TTL_MS = 60 * 60 * 1000; // 1 hour

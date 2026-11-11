@@ -6,7 +6,7 @@
  *   - rasha pem<->jwk conversion  →  exportSPKI / exportJWK / importSPKI (jose)
  */
 
-import { exportJWK, exportPKCS8, exportSPKI, generateKeyPair, importPKCS8, importSPKI } from "@panva/jose";
+import { exportJWK, exportPKCS8, exportSPKI, generateKeyPair, importPKCS8, importSPKI } from "jose";
 import { decrypt, encrypt } from "../crypto.ts";
 import type { LTIStorage } from "../storage/lti-storage.ts";
 

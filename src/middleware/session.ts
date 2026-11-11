@@ -9,7 +9,7 @@
  *    from storage, attach to context variables
  */
 
-import { getCookie } from "@hono/cookie";
+import { getCookie } from "hono/cookie";
 import { ensureMembersCached } from "../services/nrps.ts";
 import { ensureGroupsCached } from "../services/groups.ts";
 import { ensureLineItemsCached } from "../services/grade.ts";
@@ -21,7 +21,7 @@ import { DEEP_LINKING, RESOURCE_LINK } from "../messages.ts";
 
 import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { ErrorHandler, LTIContext, LTIHandler, LtikPayload, Platform } from "../types.ts";
-import type { Context, MiddlewareHandler } from "@hono";
+import type { Context, MiddlewareHandler } from "hono";
 import type { ValidationResult } from "../auth/tokens.ts";
 
 const IDTOKEN_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours

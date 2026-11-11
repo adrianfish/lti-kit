@@ -2,9 +2,9 @@
  * Deep Linking Service (LTI 1.3 Content Item Selection)
  */
 
-import { SignJWT } from "@panva/jose";
+import { SignJWT } from "jose";
 import { getPrivateKey } from "../auth/keys.ts";
-import type { LTIStorage } from "../storage/storage.ts";
+import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { ContentItem, ContextToken, IdToken, LTIToken } from "../types.ts";
 
 /**

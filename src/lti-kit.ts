@@ -1,7 +1,7 @@
-import { Hono } from "@hono";
-import { cors } from "@hono/cors";
-import { basicAuth } from '@hono/basic-auth'
-import { secureHeaders } from "@hono/secure-headers";
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { basicAuth } from 'hono/basic-auth'
+import { secureHeaders } from "hono/secure-headers";
 import { buildJwks } from "./auth/keys.ts";
 import { createSessionMiddleware } from "./middleware/session.ts";
 import { handleLogin } from "./routes/login.ts";
@@ -17,7 +17,7 @@ import { createDeepLinkingForm, createDeepLinkingMessage } from "./services/deep
 import { deriveAesKey } from "./crypto.ts";
 import { verifyLtik } from "./auth/tokens.ts";
 
-import type { MiddlewareHandler } from "@hono";
+import type { MiddlewareHandler } from "hono";
 import type { LTIStorage } from "./storage/lti-storage.ts";
 import type { MemberFilter } from "./services/nrps.ts";
 import type { ContentItem, ContextToken, ErrorHandler, Group, LineItem, LineItemOptions, LtikPayload, LTIContext, LTIHandler, LTIToken, MemberPage, Platform, Result, Score, ToolOptions } from "./types.ts";
@@ -25,7 +25,7 @@ import type { ContentItem, ContextToken, ErrorHandler, Group, LineItem, LineItem
 export class LTIKit {
 
   #app = new Hono();
-  #storage!: Storage;
+  #storage!: LTIStorage;
   #toolDomain!: string;
   #secret!: string;
   #clientName!: string;

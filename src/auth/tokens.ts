@@ -2,10 +2,10 @@
  * LTI token validation using jose.
  */
 
-import { createRemoteJWKSet, importJWK, importSPKI, jwtVerify, SignJWT } from "@panva/jose";
+import { createRemoteJWKSet, importJWK, importSPKI, jwtVerify, SignJWT } from "jose";
 import { DEEP_LINKING, RESOURCE_LINK } from "../messages.ts";
 
-import type { JWTPayload, JWTVerifyGetKey } from "@panva/jose";
+import type { JWTPayload, JWTVerifyGetKey } from "jose";
 import type { ContextToken, IdToken, Platform } from "../types.ts";
 import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { LtikPayload } from "../types.ts";
