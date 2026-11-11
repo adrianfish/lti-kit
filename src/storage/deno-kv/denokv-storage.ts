@@ -1,5 +1,5 @@
-import type { GroupTotals, LTIStorage } from "./lti-storage.ts";
-import type { AccessToken, ContextToken, Group, IdToken, LineItem, LineItemOptions, Member, MemberPage, OidcStateData, Platform, Result } from "../types.ts";
+import type { GroupTotals, LTIStorage } from "../lti-storage.ts";
+import type { AccessToken, ContextToken, Group, IdToken, LineItem, LineItemOptions, Member, MemberPage, OidcStateData, Platform, Result } from "../../types.ts";
 
 const LIST_CHUNK = 200;
 

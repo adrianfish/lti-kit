@@ -13,7 +13,7 @@ mounted by a client web application, on a path of the web application's choosing
 
 lti-kit exports a type, LTIStorage, which declares all the api methods needed to storing and
 retrieving LTI 1.3 data. There are two included implementations, one for Deno KV and one for
-Cloudflare workers D1.
+Cloudflare workers D1. The code for each implementation is hosted in a sub directory of `storage`.
 
 If you need information on Deno KV, see https://docs.deno.com/deploy/kv/
 If you need information on Cloudflare D1, see https://developers.cloudflare.com/d1/
