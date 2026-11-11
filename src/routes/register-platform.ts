@@ -4,7 +4,7 @@ import { DEEP_LINKING, RESOURCE_LINK  } from "../messages.ts";
 import { registerPlatform } from "../utils/platform-utils.ts";
 
 import type { Context } from "hono";
-import type { Platform, ToolOptions } from "../types.ts";
+import type { OpenIdConfig, Platform, ToolOptions } from "../types.ts";
 import type { LTIStorage } from "../storage/lti-storage.ts";
 import type { EnrichmentField } from "../services/enrichment-fields.ts";
 
@@ -38,14 +38,14 @@ export async function handleRegisterPlatform(
     return c.text("You must supply an openid_configuration parameter");
   }
 
-  const openIdConfig = await fetch(openIdUrl)
+  const openIdConfig: OpenIdConfig = await fetch(openIdUrl)
     .then(r => {
       if (r.ok) {
         return r.json();
       }
       throw new Error(`Network error while retrieving OpenId configuration from ${openIdUrl}`);
-    })
-    .catch(e => console.error(e));
+    });
+    //.catch(e => console.error(e));
 
   if (options.debug) {
     console.debug("");
@@ -166,7 +166,8 @@ export async function handleRegisterPlatform(
       }
       throw new Error(`Network error while registering at endpoint ${registrationEndpoint}. Status: ${r.status}`);
     })
-    .then((d) => {
+    /* @ts-ignore */
+    .then((d: { client_id: string; name: string; }) => {
 
       if (options.debug) {
         console.debug("");

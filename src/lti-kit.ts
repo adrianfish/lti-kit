@@ -65,6 +65,7 @@ export class LTIKit {
    *                 dynamic registration and displayed in the Platform's UI
    * @param {string} logoUri The uri of the logo to use with your tool. This will be supplied during
    *                 the dynamic registration and displayed in the Platform's UI
+   * @param {LTIStorage} storage The storage for lti data
    * @param {ToolOptions} options Optional configuration.
    *
    * @returns {Promise<LTIKit>} A promise containing this LTIKit instance

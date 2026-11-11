@@ -16,7 +16,7 @@ import type { ContextToken, Member, MemberPage, Platform } from "../types.ts";
 interface MembersPage {
   members: Array<Member>;
   next?: string;
-  accessToken?: string;
+  accessToken?: string | null;
 }
 
 /** The filter dimensions a roster page can be narrowed by. */
@@ -172,7 +172,7 @@ async function loadMembers(
         const headers: HTTPHeaderLink = HTTPHeaderLink.parse(r.headers);
         const next: HTTPHeaderLinkEntry[] = headers.getByRel("next");
 
-        const users = await r.json();
+        const users: MembersPage = await r.json();
         users.members.forEach((m: any) => {
 
           m.user_id = m.user_id.substring(m.user_id.lastIndexOf("/") + 1);
@@ -213,7 +213,8 @@ async function loadMembers(
       } else {
         console.error(`Network error while getting users from ${membershipsUrl}: ${r.status}`);
         console.error(await r.json());
-        return {};
+        //return {};
+        return null;
       }
     });
 }
@@ -261,7 +262,7 @@ async function primeMembersCache(
 
   const drain = (async () => {
     let pageUrl: string | undefined = first.next;
-    let accessToken: string | undefined = first.accessToken;
+    let accessToken: string | null | undefined = first.accessToken;
     let page = 2;
     while (pageUrl) {
       const result: MembersPage | null = await loadMembers(storage, toolDomain, aesKey, pageUrl, accessToken, null, null, null, null);

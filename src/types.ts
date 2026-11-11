@@ -226,3 +226,13 @@ export interface Score {
   activityProgress: "Initialized" | "Started" | "InProgress" | "Submitted" | "Completed";
   gradingProgress: "FullyGraded" | "Pending" | "PendingManual" | "Failed" | "NotReady";
 }
+
+export interface OpenIdConfig {
+  issuer: string;
+  authorization_endpoint: string;
+  registration_endpoint: string;
+  jwks_uri: string;
+  token_endpoint: string;
+  token_endpoint_auth_methods_supported: string[];
+  "https://purl.imsglobal.org/spec/lti-platform-configuration": Record<string, unknown>;
+}

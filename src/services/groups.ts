@@ -113,11 +113,12 @@ async function loadGroups(
       },
     })
     .then(async r => {
+
       if (r.ok) {
         const headers: HTTPHeaderLink = HTTPHeaderLink.parse(r.headers);
         const next: HTTPHeaderLinkEntry[] = headers.getByRel("next");
 
-        const groupsData = await r.json();
+        const groupsData: { accessToken: string | null | undefined; next: string | undefined; } = await r.json();
 
         if (next.length) {
           groupsData.next = next.length ? next[0][0] : undefined;

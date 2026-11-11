@@ -91,8 +91,8 @@ export async function requestAccessToken(
     return null;
   }
 
-  const data = await res.json();
-  const accessToken = data.access_token as string;
+  const data: { access_token: string; expires_in: number; }  = await res.json();
+  const accessToken = data.access_token;
 
   // Use the token's expiry to set the cache ttl
   const expiresIn = (data.expires_in as number) ?? 3600;

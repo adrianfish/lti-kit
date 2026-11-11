@@ -29,7 +29,7 @@ interface TotalsRow {
 }
 
 /**
- * D1Storage — LTIStorage backed by a Cloudflare D1 database.
+ * D1LTIStorage — LTIStorage backed by a Cloudflare D1 database.
  *
  * Schema: src/storage/cloudflare-d1/schema/0001_lti_init.sql. Point the
  * consuming Worker's `migrations_dir` at that directory, or copy the migration
@@ -40,7 +40,7 @@ interface TotalsRow {
  * `expires_at > ?`. Expired rows are ignored rather than deleted, because
  * LTIStorage exposes no purge method — add a scheduled sweep if growth matters.
  */
-export class D1Storage implements LTIStorage {
+export class D1LTIStorage implements LTIStorage {
 
   #db: D1Database;
   #membersAndGroupsTTL: number = 15 * 60 * 1_000;
