@@ -1,0 +1,19 @@
+{
+  "name": "lti-kit",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": "./mod.ts"
+  },
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@hugoalh/http-header-link": "^1.0.3",
+    "hono": "^4.13.18",
+    "jose": "^6.2.17"
+  }
+}
